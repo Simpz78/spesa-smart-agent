@@ -93,7 +93,7 @@ if (esselungaStockAlerts.Count > 0)
     {
         var priceStr = alert.Price.HasValue ? $"€ {alert.Price.Value:F2}" : "Prezzo n.d.";
         var discStr = alert.DiscountPercentage.HasValue ? $"-{alert.DiscountPercentage}%" : "";
-        sb.AppendLine($" • {alert.MatchedProductName}: {priceStr} {discStr} ({alert.PageNumber})");
+        sb.AppendLine($" • [{alert.MatchedProductName}] {alert.FlyerSnippet} ➔ {priceStr} {discStr} ({alert.PageNumber})");
     }
 }
 

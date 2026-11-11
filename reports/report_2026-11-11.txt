@@ -1,15 +1,13 @@
 🛒 REPORT SETTIMANALE SPESA SMART
-📅 Data: 11/11/2026 16:01
+📅 Data: 11/11/2026 16:24
 📍 Supermercato Casa Base: ESSELUNGA (Casalecchio di Reno)
 ==================================================
 
 🚨 ALERT SCORTA DA FARE DA ESSELUNGA:
- • Tonno: € 1,78 -30% (p. 1)
- • Petto di pollo al forno a fette: € 1,78 -30% (p. 1)
- • Arrosto di tacchino a fette: € 1,75 -30% (p. 1)
- • Tonno: € 8,74 -30% (p. 1)
- • Carta da cucina: € 5,79 -50% (p. 1)
- • Deodorante Air Wick: € 2,99 -40% (p. 1)
+ • [Arrosto di tacchino a fette] AIA PETTO TACCHINO Aequilibrium 140g - SCONTO FIDATY 30% - EUR 1,75 ➔ € 1,75 -30% (p. 1)
+ • [Tonno] DISPENSA E COLAZIONEESSELUNGA TONNO 70x12 lattine formato scorta - SCONTO 30% - EUR 8,74 ➔ € 8,74 -30% (p. 1)
+ • [Carta da cucina] CURA CASA E PERSONASCOTTEX CARTA CASA QUANTOBASTA - PROMOZIONE 2x1 - SCONTO 50% - EUR 5,79 ➔ € 5,79 -50% (p. 1)
+ • [Deodorante Air Wick] AIR WICK DEODORANTE RICARICA - SCONTO 40% - EUR 2,99 ➔ € 2,99 -40% (p. 1)
 
 ⚖️ CONFRONTO MIRATO (ESSELUNGA vs ALTRI STORE):
 
@@ -24,9 +22,8 @@
       👉 Risparmio: -€ 0,50 a bottiglia
 
 🔹 PETTO DI POLLO AL FORNO A FETTE:
-   🏠 Esselunga (Base): € 1,78 (sconto 30%)
-   ⚡ CONVIENE ALTROVE! 🥇 Lidl San Donato / Stalingrado (Via Serlio): € 1,59
-      👉 Risparmio: -€ 0,19 a confezione
+   🏠 Esselunga: non presente a volantino questa settimana
+   ✔️ Resta su Esselunga (Lidl costa di più: € 1,59)
 
 🔹 ARROSTO DI TACCHINO A FETTE:
    🏠 Esselunga (Base): € 1,75 (sconto 30%)
@@ -42,7 +39,6 @@
  • Kefir € 1,29  (p. 1)
  • Yogurt magro € 1,15  (p. 1)
  • Uova € 1,49  (p. 1)
- • Carta igienica € 5,79 (-50%) (p. 1)
  • Carta igienica € 5,99  (p. 1)
  • Carta igienica € 0,89  (p. 1)
  • Ammoniaca € 0,89  (p. 1)

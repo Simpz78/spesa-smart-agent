@@ -62,7 +62,13 @@ public class PdfFlyerScanner
         int pageNumber,
         List<StockProductRule> scortaRules)
     {
-        bool matched = keywords.Any(k => segment.Contains(k, StringComparison.OrdinalIgnoreCase));
+        // Cerca corrispondenza precisa a parola intera
+        bool matched = keywords.Any(k => 
+        {
+            var pattern = $@"\b{Regex.Escape(k)}\b";
+            return Regex.IsMatch(segment, pattern, RegexOptions.IgnoreCase);
+        });
+
         if (!matched)
             return;
 
