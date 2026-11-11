@@ -24,8 +24,10 @@ public static class LidlTestPdfGenerator
         page.AddText("FRESHONA PASSATA DI POMODORO 700g - SCONTO 20% - EUR 0,69", 11, new PdfPoint(50, 695), font);
         // Petto di pollo
         page.AddText("DULANO PETTO DI POLLO AL FORNO 140g - SCONTO 20% - EUR 1,59", 11, new PdfPoint(50, 675), font);
+        // Arrosto di tacchino a fette
+        page.AddText("DULANO ARROSTO DI TACCHINO A FETTE 140g - SCONTO 25% - EUR 1,49", 11, new PdfPoint(50, 660), font);
         // Carta da cucina
-        page.AddText("FLORALYS CARTA DA CUCINA ASCIUGATUTTO 2 MAXI ROTOLI - EUR 2,19", 11, new PdfPoint(50, 655), font);
+        page.AddText("FLORALYS CARTA DA CUCINA ASCIUGATUTTO 2 MAXI ROTOLI - EUR 2,19", 11, new PdfPoint(50, 640), font);
 
         var fileBytes = builder.Build();
         File.WriteAllBytes(outputPath, fileBytes);

@@ -4,7 +4,7 @@
       "name": "Tonno",
       "keywords": ["tonno", "tonno all'olio", "tonno all'olio di oliva", "tonno naturale", "rio mare", "nostromo", "esselunga", "nixe"],
       "note": "preferibilmente formati scorta / multipack",
-      "enable_price_comparison": true,
+      "enable_price_comparison": false,
       "unit_type": "kg"
     },
     {
@@ -71,7 +71,9 @@
     },
     {
       "name": "Aequilibrium AIA Tacchino",
-      "keywords": ["aequilibrium tacchino", "aequilibrium aia tacchino", "aia petto tacchino", "aequilibrium petto tacchino"]
+      "keywords": ["aequilibrium tacchino", "aequilibrium aia tacchino", "aia petto tacchino", "aequilibrium petto tacchino", "arrosto tacchino fette", "fette arrosto tacchino", "arrosto tacchino esselunga", "arrosto tacchino coop", "arrosto tacchino despar", "arrosto di tacchino"],
+      "enable_price_comparison": true,
+      "unit_type": "confezione"
     }
   ],
   "occasionali": [
