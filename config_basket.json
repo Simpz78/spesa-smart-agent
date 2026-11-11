@@ -1,0 +1,106 @@
+{
+  "fissi": [
+    {
+      "name": "Tonno",
+      "keywords": ["tonno", "tonno all'olio", "tonno all'olio di oliva", "tonno naturale", "rio mare", "nostromo", "esselunga"],
+      "note": "preferibilmente formati scorta / multipack"
+    },
+    {
+      "name": "Wurstel pacco scorta",
+      "keywords": ["wurstel", "würstel", "smart wurstel", "wuber", "golosino", "pacco scorta", "1 kg", "1kg", "maxi"]
+    },
+    {
+      "name": "Uova",
+      "keywords": ["uova", "uova fresche", "allevate a terra", "senza antibiotici", "uova x6", "uova x10", "uova x4"]
+    },
+    {
+      "name": "Pollo",
+      "keywords": ["petto di pollo", "fette pollo", "pollo fette", "fesa pollo", "pollo confezione", "bocconcini pollo"]
+    },
+    {
+      "name": "Tacchino",
+      "keywords": ["petto di tacchino", "fette tacchino", "tacchino fette", "fesa tacchino", "fesa fette", "hamburger di tacchino"]
+    },
+    {
+      "name": "Biscotti panna esselunga",
+      "keywords": ["frollino panna", "frollini panna", "biscotti panna", "slunga frollino"]
+    },
+    {
+      "name": "Carta igienica",
+      "keywords": ["carta igienica", "rotoli", "foxy", "scottex", "tempo", "smart"]
+    },
+    {
+      "name": "Carta da cucina",
+      "keywords": ["carta da cucina", "carta casa", "scottex casa", "quantobasta", "quanto basta", "asciugatutto", "rotoloni", "tuttofare"]
+    },
+    {
+      "name": "Pasta integrale",
+      "keywords": ["pasta integrale", "integrale", "spaghetto integrale", "tortiglioni int", "fusilli int", "mez maniche int", "molisana", "barilla integrale", "garofalo integrale"]
+    },
+    {
+      "name": "Yogurt magro",
+      "keywords": ["yogurt magro", "yogurt 0%", "yogurt 0,1%", "vipiteno 0,1", "yomo 0%", "muller 0%"]
+    },
+    {
+      "name": "Frutta secca",
+      "keywords": ["noci", "mandorle", "anacardi", "nocciole", "frutta secca", "sgusciate", "sgusciati", "arachidi"]
+    },
+    {
+      "name": "Kefir",
+      "keywords": ["kefir", "milk kefir", "kefir bianco", "kefir 480g"]
+    },
+    {
+      "name": "Aequilibrium AIA Pollo",
+      "keywords": ["aequilibrium pollo", "aequilibrium aia pollo", "aia petto di pollo", "aequilibrium petto pollo"]
+    },
+    {
+      "name": "Aequilibrium AIA Tacchino",
+      "keywords": ["aequilibrium tacchino", "aequilibrium aia tacchino", "aia petto tacchino", "aequilibrium petto tacchino"]
+    }
+  ],
+  "occasionali": [
+    {
+      "name": "Ammoniaca",
+      "keywords": ["ammoniaca", "smart ammoniaca"]
+    },
+    {
+      "name": "Deodorante Air Wick",
+      "keywords": ["air wick", "airwick", "deodorante ambiente", "ricarica air wick"]
+    },
+    {
+      "name": "Cotton fioc",
+      "keywords": ["bastoncini cotone", "cotton fioc", "bastoncini ess.", "cottonfioc"]
+    },
+    {
+      "name": "Dischetti cotone",
+      "keywords": ["dischetti cotone", "dischetti levatrucco", "smart dischetti"]
+    }
+  ],
+  "scorta": [
+    {
+      "name": "Tonno",
+      "min_discount_pct": 25,
+      "alert_keywords": ["12x70", "12x80", "8x70", "8x80", "sconto", "2x1", "1+1"]
+    },
+    {
+      "name": "Carta da cucina",
+      "min_discount_pct": 30,
+      "alert_keywords": ["quantobasta", "quanto basta", "2x1", "1+1", "50%"]
+    },
+    {
+      "name": "Aequilibrium AIA Pollo",
+      "min_discount_pct": 25,
+      "alert_keywords": ["sconto fidaty", "sconto 30%", "sconto 40%", "sconto 50%", "1+1", "2x1"]
+    },
+    {
+      "name": "Aequilibrium AIA Tacchino",
+      "min_discount_pct": 25,
+      "alert_keywords": ["sconto fidaty", "sconto 30%", "sconto 40%", "sconto 50%", "1+1", "2x1"]
+    },
+    {
+      "name": "Deodorante Air Wick",
+      "min_discount_pct": 30,
+      "alert_keywords": ["sconto 30%", "sconto 40%", "sconto 50%", "1+1", "2x1", "multipack"]
+    }
+  ]
+}

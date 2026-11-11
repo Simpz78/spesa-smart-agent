@@ -1,0 +1,58 @@
+{
+  "stores": [
+    {
+      "id": "esselunga_casalecchio",
+      "chain": "Esselunga",
+      "name": "Esselunga Casalecchio di Reno",
+      "address": "Piazza degli Etruschi, 2, 40033 Casalecchio di Reno BO",
+      "postal_code": "40033",
+      "city": "Casalecchio di Reno",
+      "note": "Superstore di riferimento per la spesa grande, carte prepagate, punti Fidaty"
+    },
+    {
+      "id": "coop_casciarolo",
+      "chain": "Coop Alleanza 3.0",
+      "name": "Coop Bologna Via Casciarolo",
+      "address": "Via Bartolomeo Casciarolo, 40127 Bologna BO",
+      "postal_code": "40127",
+      "city": "Bologna",
+      "note": "Supermercato di quartiere"
+    },
+    {
+      "id": "ipercoop_meraville",
+      "chain": "Coop Alleanza 3.0",
+      "name": "Ipercoop Meraville",
+      "address": "Viale Tito Carnacini, 37, 40127 Bologna BO",
+      "postal_code": "40127",
+      "city": "Bologna",
+      "note": "Ipermercato (volantini dedicati con promozioni Iper)"
+    },
+    {
+      "id": "eurospar_stalingrado",
+      "chain": "Eurospar",
+      "name": "Eurospar Via Stalingrado",
+      "address": "Via Stalingrado, 40128 Bologna BO",
+      "postal_code": "40128",
+      "city": "Bologna",
+      "note": "Supermercato Despar/Aspiag"
+    },
+    {
+      "id": "interspar_larga",
+      "chain": "Interspar",
+      "name": "Interspar Via Larga",
+      "address": "Via Larga, 10, 40138 Bologna BO",
+      "postal_code": "40138",
+      "city": "Bologna",
+      "note": "Ipermercato Despar/Aspiag (formati scorta, grandi promo)"
+    },
+    {
+      "id": "lidl_stalingrado",
+      "chain": "Lidl",
+      "name": "Lidl Via Stalingrado",
+      "address": "Via Stalingrado, 40128 Bologna BO",
+      "postal_code": "40128",
+      "city": "Bologna",
+      "note": "Discount (settimane tematiche, freschi a inizio settimana/weekend)"
+    }
+  ]
+}
