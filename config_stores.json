@@ -7,15 +7,17 @@
       "address": "Piazza degli Etruschi, 2, 40033 Casalecchio di Reno BO",
       "postal_code": "40033",
       "city": "Casalecchio di Reno",
+      "flyer_page": "https://www.doveconviene.it/esselunga/casalecchio-di-reno",
       "note": "Superstore di riferimento per la spesa grande, carte prepagate, punti Fidaty"
     },
     {
       "id": "coop_casciarolo",
       "chain": "Coop Alleanza 3.0",
-      "name": "Coop Bologna Via Casciarolo",
+      "name": "Coop Bologna Via Casciarolo (Repubblica)",
       "address": "Via Bartolomeo Casciarolo, 40127 Bologna BO",
       "postal_code": "40127",
       "city": "Bologna",
+      "flyer_page": "https://www.coopalleanza3-0.it/negozi/bologna-repubblica.html",
       "note": "Supermercato di quartiere"
     },
     {
@@ -25,34 +27,38 @@
       "address": "Viale Tito Carnacini, 37, 40127 Bologna BO",
       "postal_code": "40127",
       "city": "Bologna",
+      "flyer_page": "https://www.coopalleanza3-0.it/negozi/ipercoop-bologna-meraville.html",
       "note": "Ipermercato (volantini dedicati con promozioni Iper)"
     },
     {
       "id": "eurospar_stalingrado",
       "chain": "Eurospar",
-      "name": "Eurospar Via Stalingrado",
-      "address": "Via Stalingrado, 40128 Bologna BO",
+      "name": "Eurospar Via Stalingrado (Via Mascherino)",
+      "address": "Via Ottaviano Mascherino, 10, 40128 Bologna BO",
       "postal_code": "40128",
       "city": "Bologna",
-      "note": "Supermercato Despar/Aspiag"
+      "flyer_page": "https://www.despar.it/it/punti-vendita/eurospar-bologna-via-mascherino/",
+      "note": "Supermercato Despar/Aspiag (accesso da Via Stalingrado / Mascherino)"
     },
     {
       "id": "interspar_larga",
       "chain": "Interspar",
-      "name": "Interspar Via Larga",
-      "address": "Via Larga, 10, 40138 Bologna BO",
+      "name": "Interspar Via Larga (Via dell'Industria)",
+      "address": "Via dell'Industria, 12 / Via Larga, 40138 Bologna BO",
       "postal_code": "40138",
       "city": "Bologna",
+      "flyer_page": "https://www.despar.it/it/punti-vendita/interspar-bologna-via-industria/",
       "note": "Ipermercato Despar/Aspiag (formati scorta, grandi promo)"
     },
     {
       "id": "lidl_stalingrado",
       "chain": "Lidl",
-      "name": "Lidl Via Stalingrado",
-      "address": "Via Stalingrado, 40128 Bologna BO",
+      "name": "Lidl San Donato / Stalingrado (Via Serlio)",
+      "address": "Via Sebastiano Serlio, 35/A, 40128 Bologna BO",
       "postal_code": "40128",
       "city": "Bologna",
-      "note": "Discount (settimane tematiche, freschi a inizio settimana/weekend)"
+      "flyer_page": "https://www.lidl.it/volantino",
+      "note": "Discount Lidl di riferimento per area Stalingrado/San Donato"
     }
   ]
 }
