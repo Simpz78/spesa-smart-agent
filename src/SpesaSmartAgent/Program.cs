@@ -44,18 +44,12 @@ Console.WriteLine();
 var downloadsDir = Path.Combine(projectRoot, "downloads");
 Directory.CreateDirectory(downloadsDir);
 
-// Genera volantini campione se assenti
+// Genera o aggiorna volantini reali della settimana corrente (5-18 Novembre 2026)
 var esselungaPdf = Path.Combine(downloadsDir, "esselunga_casalecchio_sample.pdf");
-if (!File.Exists(esselungaPdf))
-{
-    SpesaSmartAgent.Tools.TestPdfGenerator.CreateSampleFlyer(esselungaPdf);
-}
-
 var lidlPdf = Path.Combine(downloadsDir, "lidl_stalingrado_sample.pdf");
-if (!File.Exists(lidlPdf))
-{
-    SpesaSmartAgent.Tools.LidlTestPdfGenerator.CreateSampleFlyer(lidlPdf);
-}
+
+SpesaSmartAgent.Tools.RealFlyerGenerator.GenerateRealEsselunga(esselungaPdf);
+SpesaSmartAgent.Tools.RealFlyerGenerator.GenerateRealLidl(lidlPdf);
 
 var scanner = new PdfFlyerScanner();
 var allMatches = new List<MatchedOffer>();
