@@ -1,4 +1,7 @@
-node_modules/
+bin/
+obj/
 downloads/
 *.pdf
 .env
+.idea/
+.vscode/

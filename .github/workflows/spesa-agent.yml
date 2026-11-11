@@ -1,0 +1,28 @@
+name: Spesa Weekly Checker
+
+on:
+  schedule:
+    # Esegue ogni giovedì alle 07:30 UTC (08:30 italiane)
+    - cron: '30 7 * * 4'
+  workflow_dispatch: # Trigger manuale tramite pulsante su GitHub
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore SpesaSmartAgent.sln
+
+      - name: Build
+        run: dotnet build SpesaSmartAgent.sln --no-restore -c Release
+
+      - name: Run Spesa Smart Agent
+        run: dotnet run --project src/SpesaSmartAgent --no-build -c Release
