@@ -25,4 +25,6 @@ jobs:
         run: dotnet build SpesaSmartAgent.sln --no-restore -c Release
 
       - name: Run Spesa Smart Agent
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: dotnet run --project src/SpesaSmartAgent --no-build -c Release
