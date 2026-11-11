@@ -35,7 +35,15 @@
     },
     {
       "name": "Pasta integrale",
-      "keywords": ["pasta integrale", "integrale", "spaghetto integrale", "tortiglioni int", "fusilli int", "mez maniche int", "molisana", "barilla integrale", "garofalo integrale"]
+      "keywords": ["pasta integrale", "integrale", "spaghetto integrale", "tortiglioni int", "fusilli int", "mez maniche int", "molisana", "barilla integrale", "garofalo integrale"],
+      "benchmark_price": 0.99,
+      "benchmark_desc": "Pasta Integrale Esselunga 500g (prezzo fisso a scaffale)"
+    },
+    {
+      "name": "Passata di pomodoro",
+      "keywords": ["passata", "passata di pomodoro", "mutti passata", "passata mutti", "pomodoro passata", "passata rustica", "passata esselunga"],
+      "benchmark_price": 0.79,
+      "benchmark_desc": "Passata Pomodoro 100% Italiano Esselunga 700g"
     },
     {
       "name": "Yogurt magro",

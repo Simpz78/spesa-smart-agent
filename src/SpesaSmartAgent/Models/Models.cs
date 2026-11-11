@@ -15,6 +15,8 @@ public class BasketProduct
 {
     public string Name { get; set; } = string.Empty;
     public List<string> Keywords { get; set; } = new();
+    public decimal? BenchmarkPrice { get; set; }
+    public string? BenchmarkDesc { get; set; }
     public string? Note { get; set; }
 }
 
@@ -39,6 +41,9 @@ public class MatchedOffer
     public string MatchedProductName { get; set; } = string.Empty;
     public string FlyerSnippet { get; set; } = string.Empty;
     public decimal? Price { get; set; }
+    public decimal? BenchmarkPrice { get; set; }
+    public string? BenchmarkDesc { get; set; }
+    public bool BeatsBenchmark => BenchmarkPrice.HasValue && Price.HasValue && Price.Value <= BenchmarkPrice.Value;
     public int? DiscountPercentage { get; set; }
     public bool IsStockAlert { get; set; }
     public string PageNumber { get; set; } = string.Empty;

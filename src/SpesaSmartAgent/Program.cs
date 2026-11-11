@@ -44,6 +44,14 @@ Console.WriteLine();
 var downloadsDir = Path.Combine(projectRoot, "downloads");
 Directory.CreateDirectory(downloadsDir);
 
+// Se la cartella è vuota, genera un PDF campione per testare il motore
+var samplePdf = Path.Combine(downloadsDir, "esselunga_casalecchio_sample.pdf");
+if (!File.Exists(samplePdf))
+{
+    Console.WriteLine("Generazione volantino campione per il test...");
+    SpesaSmartAgent.Tools.TestPdfGenerator.CreateSampleFlyer(samplePdf);
+}
+
 var scanner = new PdfFlyerScanner();
 var allMatches = new List<MatchedOffer>();
 
@@ -98,7 +106,22 @@ if (otherMatches.Count > 0)
         {
             var priceStr = item.Price.HasValue ? $"€ {item.Price.Value:F2}" : "";
             var discStr = item.DiscountPercentage.HasValue ? $"(-{item.DiscountPercentage}%)" : "";
-            Console.WriteLine($" • {item.MatchedProductName} {priceStr} {discStr} ({item.PageNumber})");
+            
+            // Segnalazione Benchmark
+            string benchmarkNote = "";
+            if (item.BenchmarkPrice.HasValue && item.Price.HasValue)
+            {
+                if (item.Price.Value > item.BenchmarkPrice.Value)
+                {
+                    benchmarkNote = $" ⚠️ [ATTENZIONE: {item.BenchmarkDesc} costa meno: € {item.BenchmarkPrice.Value:F2}]";
+                }
+                else
+                {
+                    benchmarkNote = $" 🎯 [CONVIENE: batte il prezzo base di € {item.BenchmarkPrice.Value:F2}]";
+                }
+            }
+
+            Console.WriteLine($" • {item.MatchedProductName} {priceStr} {discStr}{benchmarkNote} ({item.PageNumber})");
         }
     }
 }
