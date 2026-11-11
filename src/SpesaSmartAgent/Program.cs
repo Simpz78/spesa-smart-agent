@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using SpesaSmartAgent.Models;
 using SpesaSmartAgent.Services;
@@ -6,7 +7,6 @@ Console.WriteLine("==================================================");
 Console.WriteLine("      SPESA SMART AGENT - BOLOGNA & CASALECCHIO   ");
 Console.WriteLine("==================================================");
 
-// Risolve la root di progetto controllando la directory corrente e risalendo se necessario
 var current = new DirectoryInfo(Directory.GetCurrentDirectory());
 string? projectRoot = null;
 while (current != null)
@@ -44,86 +44,142 @@ Console.WriteLine();
 var downloadsDir = Path.Combine(projectRoot, "downloads");
 Directory.CreateDirectory(downloadsDir);
 
-// Se la cartella è vuota, genera un PDF campione per testare il motore
-var samplePdf = Path.Combine(downloadsDir, "esselunga_casalecchio_sample.pdf");
-if (!File.Exists(samplePdf))
+// Genera volantini campione se assenti
+var esselungaPdf = Path.Combine(downloadsDir, "esselunga_casalecchio_sample.pdf");
+if (!File.Exists(esselungaPdf))
 {
-    Console.WriteLine("Generazione volantino campione per il test...");
-    SpesaSmartAgent.Tools.TestPdfGenerator.CreateSampleFlyer(samplePdf);
+    SpesaSmartAgent.Tools.TestPdfGenerator.CreateSampleFlyer(esselungaPdf);
+}
+
+var lidlPdf = Path.Combine(downloadsDir, "lidl_stalingrado_sample.pdf");
+if (!File.Exists(lidlPdf))
+{
+    SpesaSmartAgent.Tools.LidlTestPdfGenerator.CreateSampleFlyer(lidlPdf);
 }
 
 var scanner = new PdfFlyerScanner();
 var allMatches = new List<MatchedOffer>();
 
 var pdfFiles = Directory.GetFiles(downloadsDir, "*.pdf");
-if (pdfFiles.Length == 0)
-{
-    Console.WriteLine($"Nessun PDF presente nella cartella: {downloadsDir}");
-    Console.WriteLine("Istruzioni: I volantini PDF scaricati vanno inseriti in 'downloads/'.");
-}
-else
-{
-    Console.WriteLine($"Trovati {pdfFiles.Length} volantini PDF da analizzare...\n");
-    foreach (var pdf in pdfFiles)
-    {
-        var fileName = Path.GetFileName(pdf);
-        var matchedStore = stores.FirstOrDefault(s => fileName.Contains(s.Id, StringComparison.OrdinalIgnoreCase)) 
-                           ?? stores.First();
+Console.WriteLine($"Trovati {pdfFiles.Length} volantini PDF da analizzare...\n");
 
-        Console.WriteLine($"Scansione: {fileName} ({matchedStore.Name})...");
-        var matches = scanner.ScanFlyerPdf(pdf, matchedStore, basket);
-        allMatches.AddRange(matches);
-    }
+foreach (var pdf in pdfFiles)
+{
+    var fileName = Path.GetFileName(pdf);
+    var matchedStore = stores.FirstOrDefault(s => fileName.Contains(s.Id, StringComparison.OrdinalIgnoreCase)) 
+                       ?? stores.First();
+
+    Console.WriteLine($"Scansione: {fileName} ({matchedStore.Name})...");
+    var matches = scanner.ScanFlyerPdf(pdf, matchedStore, basket);
+    allMatches.AddRange(matches);
 }
 
-// Stampa report
-Console.WriteLine();
-Console.WriteLine("==================================================");
-Console.WriteLine("                REPORT PROMOZIONI                 ");
-Console.WriteLine("==================================================");
+// Generazione Report in memoria
+var sb = new StringBuilder();
+sb.AppendLine("🛒 REPORT SETTIMANALE SPESA SMART");
+sb.AppendLine($"📅 Data: {DateTime.Now:dd/MM/yyyy HH:mm}");
+sb.AppendLine("📍 Supermercato Casa Base: ESSELUNGA (Casalecchio di Reno)");
+sb.AppendLine("==================================================");
 
-var stockAlerts = allMatches.Where(m => m.IsStockAlert).ToList();
-if (stockAlerts.Count > 0)
+// 1. ALERT SCORTA ESSELUNGA
+var esselungaStockAlerts = allMatches
+    .Where(m => m.IsStockAlert && m.Chain.Equals("Esselunga", StringComparison.OrdinalIgnoreCase))
+    .ToList();
+
+if (esselungaStockAlerts.Count > 0)
 {
-    Console.WriteLine("\n🚨 ALERT SCORTA ATTIVI (Sconti forti / Multipack):");
-    foreach (var alert in stockAlerts)
+    sb.AppendLine("\n🚨 ALERT SCORTA DA FARE DA ESSELUNGA:");
+    foreach (var alert in esselungaStockAlerts)
     {
         var priceStr = alert.Price.HasValue ? $"€ {alert.Price.Value:F2}" : "Prezzo n.d.";
         var discStr = alert.DiscountPercentage.HasValue ? $"-{alert.DiscountPercentage}%" : "";
-        Console.WriteLine($" • [{alert.Chain}] {alert.MatchedProductName}: {priceStr} {discStr} ({alert.PageNumber})");
-        Console.WriteLine($"   Dettaglio: {alert.FlyerSnippet}");
+        sb.AppendLine($" • {alert.MatchedProductName}: {priceStr} {discStr} ({alert.PageNumber})");
     }
 }
 
-var otherMatches = allMatches.Where(m => !m.IsStockAlert).ToList();
-if (otherMatches.Count > 0)
+// 2. CONFRONTO PREZZI (Solo sui 4 prodotti selezionati: Tonno, Passata, Pollo al forno, Carta cucina)
+var comparisonProducts = basket.Fissi.Where(p => p.EnablePriceComparison).ToList();
+sb.AppendLine("\n⚖️ CONFRONTO MIRATO (ESSELUNGA vs ALTRI STORE):");
+
+foreach (var prod in comparisonProducts)
 {
-    Console.WriteLine("\n🛒 ALTRE OFFERTE DEL PANIERE:");
-    foreach (var grp in otherMatches.GroupBy(m => m.StoreName))
-    {
-        Console.WriteLine($"\n--- {grp.Key} ---");
-        foreach (var item in grp)
-        {
-            var priceStr = item.Price.HasValue ? $"€ {item.Price.Value:F2}" : "";
-            var discStr = item.DiscountPercentage.HasValue ? $"(-{item.DiscountPercentage}%)" : "";
-            
-            // Segnalazione Benchmark
-            string benchmarkNote = "";
-            if (item.BenchmarkPrice.HasValue && item.Price.HasValue)
-            {
-                if (item.Price.Value > item.BenchmarkPrice.Value)
-                {
-                    benchmarkNote = $" ⚠️ [ATTENZIONE: {item.BenchmarkDesc} costa meno: € {item.BenchmarkPrice.Value:F2}]";
-                }
-                else
-                {
-                    benchmarkNote = $" 🎯 [CONVIENE: batte il prezzo base di € {item.BenchmarkPrice.Value:F2}]";
-                }
-            }
+    var essMatch = allMatches.FirstOrDefault(m => m.Chain.Contains("Esselunga", StringComparison.OrdinalIgnoreCase) && m.MatchedProductName.Equals(prod.Name, StringComparison.OrdinalIgnoreCase));
+    var competitorMatches = allMatches.Where(m => !m.Chain.Contains("Esselunga", StringComparison.OrdinalIgnoreCase) && m.MatchedProductName.Equals(prod.Name, StringComparison.OrdinalIgnoreCase)).ToList();
 
-            Console.WriteLine($" • {item.MatchedProductName} {priceStr} {discStr}{benchmarkNote} ({item.PageNumber})");
-        }
+    sb.AppendLine($"\n🔹 {prod.Name.ToUpper()}:");
+    if (essMatch != null && essMatch.Price.HasValue)
+    {
+        sb.AppendLine($"   🏠 Esselunga (Base): € {essMatch.Price.Value:F2} (sconto {essMatch.DiscountPercentage ?? 0}%)");
+    }
+    else if (prod.BenchmarkPrice.HasValue)
+    {
+        sb.AppendLine($"   🏠 Esselunga (Scaffale fisso): € {prod.BenchmarkPrice.Value:F2} ({prod.BenchmarkDesc})");
+    }
+    else
+    {
+        sb.AppendLine("   🏠 Esselunga: non presente a volantino questa settimana");
+    }
+
+    // Controlla se un concorrente batte Esselunga
+    var cheaperCompetitor = competitorMatches
+        .Where(c => c.Price.HasValue)
+        .OrderBy(c => c.Price!.Value)
+        .FirstOrDefault();
+
+    decimal? basePrice = essMatch?.Price ?? prod.BenchmarkPrice;
+
+    if (cheaperCompetitor != null && basePrice.HasValue && cheaperCompetitor.Price < basePrice)
+    {
+        var diff = basePrice.Value - cheaperCompetitor.Price!.Value;
+        sb.AppendLine($"   ⚡ CONVIENE ALTROVE! 🥇 {cheaperCompetitor.StoreName}: € {cheaperCompetitor.Price.Value:F2}");
+        sb.AppendLine($"      👉 Risparmio: -€ {diff:F2} a {prod.UnitType ?? "pezzo"}");
+    }
+    else if (cheaperCompetitor != null)
+    {
+        sb.AppendLine($"   ✔️ Resta su Esselunga ({cheaperCompetitor.Chain} costa di più: € {cheaperCompetitor.Price!.Value:F2})");
+    }
+    else
+    {
+        sb.AppendLine("   ✔️ Nessuna offerta concorrente migliore: compra tranquillamente da Esselunga.");
     }
 }
 
-Console.WriteLine("\nScansione completata!");
+// 3. PRODOTTI FISSI ESSELUNGA
+var otherEsselunga = allMatches
+    .Where(m => m.Chain.Equals("Esselunga", StringComparison.OrdinalIgnoreCase) && !m.IsStockAlert && !comparisonProducts.Any(c => c.Name.Equals(m.MatchedProductName, StringComparison.OrdinalIgnoreCase)))
+    .ToList();
+
+if (otherEsselunga.Count > 0)
+{
+    sb.AppendLine("\n🛒 ALTRI PRODOTTI DEL TUO PANIERE DA ESSELUNGA:");
+    foreach (var item in otherEsselunga)
+    {
+        var priceStr = item.Price.HasValue ? $"€ {item.Price.Value:F2}" : "";
+        var discStr = item.DiscountPercentage.HasValue ? $"(-{item.DiscountPercentage}%)" : "";
+        sb.AppendLine($" • {item.MatchedProductName} {priceStr} {discStr} ({item.PageNumber})");
+    }
+}
+
+var reportText = sb.ToString();
+Console.WriteLine(reportText);
+
+// Salvataggio su file reports/
+var reportsDir = Path.Combine(projectRoot, "reports");
+Directory.CreateDirectory(reportsDir);
+var reportFile = Path.Combine(reportsDir, $"report_{DateTime.Now:yyyy-MM-dd}.txt");
+File.WriteAllText(reportFile, reportText);
+Console.WriteLine($"\nReport salvato in: {reportFile}");
+
+// Invio notifica ntfy se presente configurazione topic
+var ntfyTopic = Environment.GetEnvironmentVariable("NTFY_TOPIC");
+if (!string.IsNullOrWhiteSpace(ntfyTopic))
+{
+    Console.WriteLine($"Invio notifica ntfy su topic: {ntfyTopic}...");
+    var ntfy = new NtfyNotificationService();
+    var sent = await ntfy.SendReportAsync(ntfyTopic, "Spesa Smart - Report Offerte", reportText);
+    Console.WriteLine(sent ? "Notifica inviata con successo!" : "Errore durante l'invio della notifica.");
+}
+else
+{
+    Console.WriteLine("\n[Info ntfy] Per ricevere la notifica sullo smartphone, imposta la variabile d'ambiente NTFY_TOPIC.");
+}

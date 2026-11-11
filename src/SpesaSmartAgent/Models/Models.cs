@@ -13,10 +13,25 @@ public class TargetStore
 
 public class BasketProduct
 {
+    [System.Text.Json.Serialization.JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
+
+    [System.Text.Json.Serialization.JsonPropertyName("keywords")]
     public List<string> Keywords { get; set; } = new();
+
+    [System.Text.Json.Serialization.JsonPropertyName("benchmark_price")]
     public decimal? BenchmarkPrice { get; set; }
+
+    [System.Text.Json.Serialization.JsonPropertyName("benchmark_desc")]
     public string? BenchmarkDesc { get; set; }
+
+    [System.Text.Json.Serialization.JsonPropertyName("enable_price_comparison")]
+    public bool EnablePriceComparison { get; set; }
+
+    [System.Text.Json.Serialization.JsonPropertyName("unit_type")]
+    public string? UnitType { get; set; }
+
+    [System.Text.Json.Serialization.JsonPropertyName("note")]
     public string? Note { get; set; }
 }
 

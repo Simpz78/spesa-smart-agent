@@ -2,8 +2,10 @@
   "fissi": [
     {
       "name": "Tonno",
-      "keywords": ["tonno", "tonno all'olio", "tonno all'olio di oliva", "tonno naturale", "rio mare", "nostromo", "esselunga"],
-      "note": "preferibilmente formati scorta / multipack"
+      "keywords": ["tonno", "tonno all'olio", "tonno all'olio di oliva", "tonno naturale", "rio mare", "nostromo", "esselunga", "nixe"],
+      "note": "preferibilmente formati scorta / multipack",
+      "enable_price_comparison": true,
+      "unit_type": "kg"
     },
     {
       "name": "Wurstel pacco scorta",
@@ -31,7 +33,9 @@
     },
     {
       "name": "Carta da cucina",
-      "keywords": ["carta da cucina", "carta casa", "scottex casa", "quantobasta", "quanto basta", "asciugatutto", "rotoloni", "tuttofare"]
+      "keywords": ["carta da cucina", "carta casa", "scottex casa", "quantobasta", "quanto basta", "asciugatutto", "rotoloni", "tuttofare"],
+      "enable_price_comparison": true,
+      "unit_type": "confezione"
     },
     {
       "name": "Pasta integrale",
@@ -41,9 +45,11 @@
     },
     {
       "name": "Passata di pomodoro",
-      "keywords": ["passata", "passata di pomodoro", "mutti passata", "passata mutti", "pomodoro passata", "passata rustica", "passata esselunga"],
+      "keywords": ["passata", "passata di pomodoro", "mutti passata", "passata mutti", "pomodoro passata", "passata rustica", "passata esselunga", "freshona"],
       "benchmark_price": 0.79,
-      "benchmark_desc": "Passata Pomodoro 100% Italiano Esselunga 700g"
+      "benchmark_desc": "Passata Pomodoro 100% Italiano Esselunga 700g",
+      "enable_price_comparison": true,
+      "unit_type": "bottiglia"
     },
     {
       "name": "Yogurt magro",
@@ -59,7 +65,9 @@
     },
     {
       "name": "Aequilibrium AIA Pollo",
-      "keywords": ["aequilibrium pollo", "aequilibrium aia pollo", "aia petto di pollo", "aequilibrium petto pollo"]
+      "keywords": ["aequilibrium pollo", "aequilibrium aia pollo", "aia petto di pollo", "aequilibrium petto pollo", "petto di pollo al forno", "petto pollo forno"],
+      "enable_price_comparison": true,
+      "unit_type": "confezione"
     },
     {
       "name": "Aequilibrium AIA Tacchino",

@@ -20,7 +20,7 @@ public static class TestPdfGenerator
 
         // Offerte
         page.AddText("REPARTO MACELLERIA E SURGELATI", 14, new PdfPoint(50, 740), boldFont);
-        page.AddText("AIA PETTO DI POLLO Aequilibrium 140g - SCONTO FIDATY 30% - EUR 1,78", 11, new PdfPoint(50, 715), font);
+        page.AddText("AIA PETTO DI POLLO Aequilibrium al forno 140g - SCONTO FIDATY 30% - EUR 1,78", 11, new PdfPoint(50, 715), font);
         page.AddText("AIA PETTO TACCHINO Aequilibrium 140g - SCONTO FIDATY 30% - EUR 1,75", 11, new PdfPoint(50, 695), font);
         page.AddText("SMART WURSTEL 1 KG pacco scorta - EUR 2,52", 11, new PdfPoint(50, 675), font);
 
