@@ -64,14 +64,43 @@
       "keywords": ["kefir", "milk kefir", "kefir bianco", "kefir 480g"]
     },
     {
-      "name": "Aequilibrium AIA Pollo",
-      "keywords": ["aequilibrium pollo", "aequilibrium aia pollo", "aia petto di pollo", "aequilibrium petto pollo", "petto di pollo al forno", "petto pollo forno"],
+      "name": "Petto di pollo al forno a fette",
+      "keywords": [
+        "petto di pollo al forno",
+        "petto pollo al forno",
+        "petto di pollo forno",
+        "petto pollo forno",
+        "arrosto pollo fette",
+        "fette arrosto pollo",
+        "pollo fette al forno",
+        "aequilibrium pollo",
+        "aequilibrium aia pollo",
+        "aia petto di pollo",
+        "aia petto pollo",
+        "petto pollo esselunga",
+        "petto pollo coop",
+        "petto pollo despar",
+        "dulano petto di pollo"
+      ],
       "enable_price_comparison": true,
       "unit_type": "confezione"
     },
     {
-      "name": "Aequilibrium AIA Tacchino",
-      "keywords": ["aequilibrium tacchino", "aequilibrium aia tacchino", "aia petto tacchino", "aequilibrium petto tacchino", "arrosto tacchino fette", "fette arrosto tacchino", "arrosto tacchino esselunga", "arrosto tacchino coop", "arrosto tacchino despar", "arrosto di tacchino"],
+      "name": "Arrosto di tacchino a fette",
+      "keywords": [
+        "arrosto tacchino fette",
+        "fette arrosto tacchino",
+        "arrosto di tacchino",
+        "arrosto tacchino",
+        "aequilibrium tacchino",
+        "aequilibrium aia tacchino",
+        "aia petto tacchino",
+        "aequilibrium petto tacchino",
+        "arrosto tacchino esselunga",
+        "arrosto tacchino coop",
+        "arrosto tacchino despar",
+        "dulano arrosto di tacchino"
+      ],
       "enable_price_comparison": true,
       "unit_type": "confezione"
     }
@@ -106,12 +135,12 @@
       "alert_keywords": ["quantobasta", "quanto basta", "2x1", "1+1", "50%"]
     },
     {
-      "name": "Aequilibrium AIA Pollo",
+      "name": "Petto di pollo al forno a fette",
       "min_discount_pct": 25,
       "alert_keywords": ["sconto fidaty", "sconto 30%", "sconto 40%", "sconto 50%", "1+1", "2x1"]
     },
     {
-      "name": "Aequilibrium AIA Tacchino",
+      "name": "Arrosto di tacchino a fette",
       "min_discount_pct": 25,
       "alert_keywords": ["sconto fidaty", "sconto 30%", "sconto 40%", "sconto 50%", "1+1", "2x1"]
     },
