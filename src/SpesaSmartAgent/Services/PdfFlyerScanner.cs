@@ -21,16 +21,22 @@ public class PdfFlyerScanner
 
         foreach (var page in document.GetPages())
         {
-            // Suddivide per lettere raggruppate o per segmenti di testo/frasi
-            var text = page.Text;
-            if (string.IsNullOrWhiteSpace(text))
+            // Ricostruisce le righe di testo raggruppando le parole per coordinata Y
+            var words = page.GetWords().ToList();
+            if (!words.Any())
                 continue;
 
-            // Riconosce i segmenti separati da a capo o da delimitatori comuni nei volantini
-            var segments = Regex.Split(text, @"(?<=(?:EUR|€)\s*\d+[,\.]\d{2})|(?<=\d+[,\.]\d{2}\s*(?:EUR|€))|[\r\n]+")
-                                .Select(s => s.Trim())
-                                .Where(s => s.Length > 3)
-                                .ToList();
+            // Raggruppa parole sulla stessa riga (tolleranza 4pt in Y)
+            const double yTolerance = 4.0;
+            var lineGroups = words
+                .GroupBy(w => Math.Round(w.BoundingBox.Bottom / yTolerance) * yTolerance)
+                .OrderByDescending(g => g.Key)
+                .Select(g => string.Join(" ", g.OrderBy(w => w.BoundingBox.Left).Select(w => w.Text)))
+                .Where(line => line.Length > 2)
+                .ToList();
+
+            // Usa le singole righe di testo
+            var segments = lineGroups;
 
             foreach (var segment in segments)
             {

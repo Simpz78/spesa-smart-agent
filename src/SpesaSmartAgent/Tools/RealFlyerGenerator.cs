@@ -53,4 +53,32 @@ public static class RealFlyerGenerator
 
         File.WriteAllBytes(outputPath, builder.Build());
     }
+
+    public static void GenerateRealCarrefour(string outputPath)
+    {
+        var builder = new PdfDocumentBuilder();
+        var page = builder.AddPage(PageSize.A4);
+        var font = builder.AddStandard14Font(Standard14Font.Helvetica);
+        var boldFont = builder.AddStandard14Font(Standard14Font.HelveticaBold);
+
+        page.AddText("CARREFOUR IPER GRAN RENO - VOLANTINO SOTTOCOSTO", 16, new PdfPoint(50, 800), boldFont);
+        page.AddText("Offerte valide dal 13 al 19 Novembre 2026 - Casalecchio di Reno (BO)", 12, new PdfPoint(50, 780), font);
+
+        page.AddText("DISPENSA E CONSERVE", 14, new PdfPoint(50, 740), boldFont);
+        page.AddText("PASSATA DI POMODORO MUTTI 800g - SOTTOCOSTO - EUR 0,89", 11, new PdfPoint(50, 715), font);
+        page.AddText("PASTA DE CECCO 500g formati classici - SCONTO 35% - EUR 0,99", 11, new PdfPoint(50, 695), font);
+        page.AddText("TONNO NOSTROMO 3x80g olio di oliva - SCONTO 20% - EUR 2,49", 11, new PdfPoint(50, 675), font);
+
+        page.AddText("CARNE E FRESCHI", 14, new PdfPoint(50, 640), boldFont);
+        page.AddText("PETTO DI POLLO AL FORNO A FETTE AIA 140g - SCONTO 15% - EUR 1,69", 11, new PdfPoint(50, 615), font);
+        page.AddText("ARROSTO DI TACCHINO A FETTE FIORUCCI 130g - EUR 1,79", 11, new PdfPoint(50, 595), font);
+        page.AddText("FILETTO DI POLLO FRESCO - EUR 9,90 al kg", 11, new PdfPoint(50, 575), font);
+
+        page.AddText("CURA CASA E IGIENE", 14, new PdfPoint(50, 540), boldFont);
+        page.AddText("ROTOLONI REGINA CARTA DA CUCINA 4 ROTOLI MAXI - EUR 3,89", 11, new PdfPoint(50, 515), font);
+        page.AddText("SCOTTEX CARTA CASA 4 ROTOLI - EUR 3,99", 11, new PdfPoint(50, 495), font);
+        page.AddText("PAMPERS BABY DRY taglia 4 - SCONTO 30% - EUR 10,99", 11, new PdfPoint(50, 475), font);
+
+        File.WriteAllBytes(outputPath, builder.Build());
+    }
 }

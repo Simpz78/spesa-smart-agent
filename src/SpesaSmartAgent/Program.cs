@@ -47,9 +47,11 @@ Directory.CreateDirectory(downloadsDir);
 // Genera o aggiorna volantini reali della settimana corrente (5-18 Novembre 2026)
 var esselungaPdf = Path.Combine(downloadsDir, "esselunga_casalecchio_sample.pdf");
 var lidlPdf = Path.Combine(downloadsDir, "lidl_stalingrado_sample.pdf");
+var carrefourPdf = Path.Combine(downloadsDir, "carrefour_granreno_sample.pdf");
 
 SpesaSmartAgent.Tools.RealFlyerGenerator.GenerateRealEsselunga(esselungaPdf);
 SpesaSmartAgent.Tools.RealFlyerGenerator.GenerateRealLidl(lidlPdf);
+SpesaSmartAgent.Tools.RealFlyerGenerator.GenerateRealCarrefour(carrefourPdf);
 
 var scanner = new PdfFlyerScanner();
 var allMatches = new List<MatchedOffer>();
@@ -122,15 +124,28 @@ foreach (var prod in comparisonProducts)
 
     decimal? basePrice = essMatch?.Price ?? prod.BenchmarkPrice;
 
+    // Elenco concorrenti trovati
+    if (competitorMatches.Any(c => c.Price.HasValue))
+    {
+        foreach (var comp in competitorMatches.Where(c => c.Price.HasValue).OrderBy(c => c.Price!.Value))
+        {
+            var diff = basePrice.HasValue ? basePrice.Value - comp.Price!.Value : (decimal?)null;
+            var diffStr = diff.HasValue
+                ? (diff.Value > 0 ? $" (-€ {diff.Value:F2})" : $" (+€ {-diff.Value:F2})")
+                : "";
+            sb.AppendLine($"   🔍 {comp.StoreName}: € {comp.Price!.Value:F2}{diffStr}");
+        }
+    }
+
     if (cheaperCompetitor != null && basePrice.HasValue && cheaperCompetitor.Price < basePrice)
     {
         var diff = basePrice.Value - cheaperCompetitor.Price!.Value;
         sb.AppendLine($"   ⚡ CONVIENE ALTROVE! 🥇 {cheaperCompetitor.StoreName}: € {cheaperCompetitor.Price.Value:F2}");
         sb.AppendLine($"      👉 Risparmio: -€ {diff:F2} a {prod.UnitType ?? "pezzo"}");
     }
-    else if (cheaperCompetitor != null)
+    else if (cheaperCompetitor != null && basePrice.HasValue)
     {
-        sb.AppendLine($"   ✔️ Resta su Esselunga ({cheaperCompetitor.Chain} costa di più: € {cheaperCompetitor.Price!.Value:F2})");
+        sb.AppendLine($"   ✔️ Resta su Esselunga (il più economico dei concorrenti costa € {cheaperCompetitor.Price!.Value:F2})");
     }
     else
     {

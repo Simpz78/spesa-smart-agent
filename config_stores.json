@@ -59,6 +59,16 @@
       "city": "Bologna",
       "flyer_page": "https://www.lidl.it/volantino",
       "note": "Discount Lidl di riferimento per area Stalingrado/San Donato"
+    },
+    {
+      "id": "carrefour_granreno",
+      "chain": "Carrefour",
+      "name": "Carrefour Iper Gran Reno",
+      "address": "Via Marilyn Monroe, 2/9, 40033 Casalecchio di Reno BO",
+      "postal_code": "40033",
+      "city": "Casalecchio di Reno",
+      "flyer_page": "https://www.carrefour.it/volantino/",
+      "note": "Ipermercato Carrefour nel centro commerciale Gran Reno - stesso comune di Esselunga"
     }
   ]
 }
